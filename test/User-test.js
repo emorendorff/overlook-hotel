@@ -159,5 +159,21 @@ describe('User', () => {
       expect(user).to.be.an.instanceOf(User);
   });
 
+  it('should have a username of customer2', () = {
+      expect(user2.userID).to.equal('customer2');
+  });
+
+  it('should have a default password of overlook2021', () => {
+      expect(user2.password).to.equal('overlook2021')
+  });
+
+  it('should have a default value of 0 for totalSpent', () => {
+      expect(user2.totalSpent).to.equal(0)
+  })
+
+  it('should be able to confirm userID creditentials', () => {
+    expect(user2.validateUser('customer2')).to.equal(true)
+    expect(user3.validateUser('moose3')).to.equal(false)
+  })
 
 })
