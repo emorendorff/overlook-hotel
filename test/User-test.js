@@ -149,6 +149,15 @@ describe('User', () => {
         "roomNumber": 11,
         "roomServiceCharges": []
       }];
-
   })
+
+  it('should be a function', () => {
+      expect(User).to.be.a('function');
+  });
+
+  it('should be an instance of the class User', () => {
+      expect(user).to.be.an.instanceOf(User);
+  });
+
+
 })
