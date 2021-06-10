@@ -174,7 +174,7 @@ describe('User', () => {
     expect(user2.totalSpent).to.equal(0)
   });
 
-  it('should be able to confirm userID creditentials', () => {
+  it.only('should be able to confirm userID creditentials', () => {
     user2.validateUser('customer2')
     user3.validateUser('goodmoose')
 
