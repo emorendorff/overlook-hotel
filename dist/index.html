@@ -16,16 +16,23 @@
     </nav>
   </header>
   <main>
-    <section class="book-room container">
+    <section class="book-room-container">
       <h3 class="box-headers">STAY WITH US</h3>
       <div class='left-side-input'>
         <label for='start-date'><h5>DATE:</h5></label>
-        <div class='inline'>
+        <div class='date-container'>
           <input type='date' name='start-date' value='' id='start-date' aria-label="date selection" alt='Enter the date here.'>            
           <button type='button' name='check-availability' id='checkAvailabilityBtn'>Check Availability</button>
         </div>
       </div>
     </section>
+    <aside class='past-bookings-container'>
+      <h3 class='section-header'>YOUR BOOKINGS</h3>
+      <section class='total-section'></section>
+        <h4>TOTAL AMOUNT:</h4>
+        <h5 id='totalAmount'></h5>
+    </aside>
+      
   </main> 
   
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
