@@ -7,7 +7,7 @@ import './images/axe.png'
 
 
 export function fetchAllData() {
-  apiCalls.fetchAllData();
+  .fetchAllData();
 }
 
 export function makeFetchData(data) {
@@ -15,3 +15,5 @@ export function makeFetchData(data) {
   allRoomsData = data[1].rooms;
   allBookingsData = data[2].bookings;
 }
+
+
