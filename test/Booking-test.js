@@ -5,9 +5,11 @@ import { bookingsTest, roomsTest } from './testDataSet';
 
 describe('Bookings', () => {
   let booking;
+  let booking2
 
   beforeEach(() => {
-    booking = new Booking(bookingsTest, roomsTest, '2020/04/22')
+    booking = new Booking(bookingsTest, roomsTest, '2020/04/22');
+    booking2 = new Booking(bookingsTest, roomsTest, "2021/03/02");
   });
 
   it('should be a function', () => {
@@ -27,19 +29,19 @@ describe('Bookings', () => {
     expect(booking.roomsAvailable).to.deep.equal([]);
   });
 
-  it.only('should have a date', () => {
+  it('should have a date', () => {
     expect(booking.date).to.equal("2020/04/22")
   });
 
   it('should be able to view available rooms for a given date', () => {
-    expect(booking.roomsAvailable).to.equal
+    expect(booking.checkAvailableRooms("2020/04/22")).to.deep.equal(booking.roomsAvailable)
   })
 
-  it('should tell a user if no rooms are available for that specific date', () => {
-
-  });
-
   it('should be able to filter available rooms by their roomType property', () => {
+    
+    booking.checkAvailableRooms("2020/04/22")
+    
+    expect(booking.filterByRoomType('residential suite')).to.deep.equal()
 
   });
 

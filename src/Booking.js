@@ -9,25 +9,36 @@ class Booking {
   }
 
   checkAvailableRooms(date) {
+    //gonna need a .value for the dom from user calendar
+    console.log(date)
     const alreadyBooked = this.bookings.reduce((acc, booking) => {
-      if(booking.date === date) {
+      if (this.bookings.date === date) {
         acc.push(booking.roomNumber)
       }
       return acc
-    }, [])
-
-    console.log(alreadyBooked)
+    }, []);
 
     const availableRoomNums = this.rooms.filter(room => !alreadyBooked.includes(room.number))
     this.roomsAvailable = availableRoomNums;
-    console.log(this.roomsAvailable)
+    if (this.roomsAvailable.length) {
+      return this.roomsAvailable
+    } else {
+      return "We're so sorry, there are no rooms available for this date."
+    }
+
   }
 
+  filterByRoomType(roomType) {
+    if (roomType === 'All') {
+      return this.roomsAvailable
+    }
+    return this.roomsAvailable.filter(room => room.roomType === roomtype)
+  }
 }
 
 
-//find available rooms...
-//check which ARE booked with data as an argument
-//get those into an array then filter against what's included
+// find available rooms...
+// check which ARE booked with data as an argument
+// get those into an array then filter against what's included
 
 export default Booking;
