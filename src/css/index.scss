@@ -1,0 +1,62 @@
+@import './_normalize.scss'; 
+@import './_variables.scss';
+@import './_colors.scss';
+
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+//main flex
+
+.book-room-container {
+  border: .75em solid $red;
+  padding: 1.25em;
+  margin: 2.25em;
+}
+
+.past-bookings-container {
+  border: .75em solid $red;
+  padding: 1.25em;
+  margin: 2.25em;
+}
+
+.line {
+  width: 100%;
+  height: .3em;
+  background-color: white;
+  margin-bottom: .5em;
+}
+
+//buttons
+
+button {
+  background-color: $blush;
+  border: none;
+  padding: .75em;
+  width: 50%;
+  font-size: 1em;
+  margin-top: .25em;
+  }
+
+.logout-btn {
+  width: 10em;
+  letter-spacing: .15em;
+}
+
+  //navigation 
+
+  .guest-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  //everything else
+
+  .hide {
+    display: none;
+  }
+  

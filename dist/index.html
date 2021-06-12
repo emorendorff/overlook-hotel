@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="stylesheet" href="./src/css/index.scss">
   <title>Overlook Hotel</title>
 </head>
 <body>
@@ -18,10 +19,11 @@
   <main>
     <section class="book-room-container">
       <h3 class="box-headers">STAY WITH US</h3>
+      <div class="line"></div>
       <div class='left-side-input'>
         <label for='start-date'><h5>DATE:</h5></label>
         <div class='date-container'>
-          <input type='date' name='start-date' value='' id='start-date' aria-label="date selection" alt='Enter the date here.'>            
+          <input type='date' name='start-date' value='' id=startDate aria-label="date selection" alt='Enter the date here.'>            
           <button type='button' name='check-availability' id='checkAvailabilityBtn'>Check Availability</button>
         </div>
       </div>
