@@ -27,6 +27,10 @@ describe('Bookings', () => {
     expect(booking.roomsAvailable).to.deep.equal([]);
   });
 
+  it.only('should have a date', () => {
+    expect(booking.date).to.equal("2020/04/22")
+  });
+
   it('should be able to view available rooms for a given date', () => {
     expect(booking.roomsAvailable).to.equal
   })
