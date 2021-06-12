@@ -4,10 +4,10 @@ import Booking from '../src/Booking.js';
 import { bookingsTest, roomsTest } from './testDataSet';
 
 describe('Bookings', () => {
-  let booking1;
+  let booking;
 
   beforeEach(() => {
-    booking1 = new Booking(bookingInfo, roomInfo)
+    booking = new Booking(bookingsTest, roomsTest, '2020/04/22')
   });
 
   it('should be a function', () => {
@@ -18,17 +18,17 @@ describe('Bookings', () => {
     expect(booking).to.be.an.instanceOf(Booking);
   });
 
-  it('should have hold all rooms and bookings', () => {
-      expect(booking.bookings).to.deep.equal(bookingInfo);
-      expect(booking.rooms).to.deep.equal(roomInfo);
+  it('should be holding all rooms and bookings', () => {
+    expect(booking.bookings).to.deep.equal(bookingsTest);
+    expect(booking.rooms).to.deep.equal(roomsTest);
   });
 
   it('should have a default empty array for available rooms', () => {
-      expect(booking.roomsAvailable).to.deep.equal([]);
+    expect(booking.roomsAvailable).to.deep.equal([]);
   });
 
   it('should be able to view available rooms for a given date', () => {
-
+    expect(booking.roomsAvailable).to.equal
   })
 
   it('should tell a user if no rooms are available for that specific date', () => {
