@@ -10,11 +10,13 @@ class Guest extends User {
 
   getPastStays(bookingsTest) {
     this.validateUser(this.userID)
-    const past = bookingsTest.filter(booking => booking.userID === this.id)
-    console.log(past)
-    this.pastStays = past;
-    console.log(this.pastStays)
-    return past;
+    let past = bookingsTest.filter(booking => booking.userID === this.id)
+    this.pastStays = past
+    if (this.pastStays === []) {
+      return 'You have not stayed with us before'
+    } else {
+      return this.pastStays
+    }
   }
 
   //   calculateTotalSpent(bookingsTest, roomsTest) {

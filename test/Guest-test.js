@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { expect } from 'chai'
 import Guest from '../src/Guest.js'
 import { bookingsTest, roomsTest, customersTest } from './testDataSet';
@@ -28,16 +29,24 @@ describe('Guest', () => {
       expect(guest2.isUser).to.equal(true);
     });
 
-    it.only('should have no bookings to start', () => {
+    it('should have no bookings to start', () => {
       expect(guest2.pastStays).to.deep.equal([]);
       expect(guest2.currentStays).to.deep.equal([]);
       expect(guest2.futureStays).to.deep.equal([]);
     });
 
     it.only('should be able to find guests past stays', () => {
-      guest.validateUser('customer1')
-      guest.getPastStays(bookingsTest)
-      expect(guest.pastStays).to.deep.equal([bookingsTest[4]])
+      guest.validateUser('customer1');
+      guest.getPastStays(bookingsTest);
+      console.log(guest.getPastStays(bookingsTest))
+      expect(guest.pastStays).to.deep.equal([bookingsTest[4]]);
+    });
+
+    it.only('should return a statement if no prior bookings exist', () => {
+      guest3.validateUser('customer3')
+      guest3.getPastStays(bookingsTest)
+      console.log(guest3.getPastStays(bookingsTest))
+      expect(guest3.getPastStays(bookingsTest)).to.equal('You have not stayed with us before')
     })
 
     
