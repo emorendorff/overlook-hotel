@@ -10,7 +10,7 @@ describe('Guest', () => {
   beforeEach(() => {
     guest = new Guest('customer1', customersTest)
     guest2 = new Guest('customer2', customersTest)
-    guest3 = new Guest()
+    guest3 = new Guest('customer3', customersTest)
   });
 
   describe('Guest', () => {
@@ -21,5 +21,26 @@ describe('Guest', () => {
     it('should be an instance of Guest', () => {
       expect(guest).to.be.an.instanceOf(Guest);
     });
+
+    it('should have a valid user id', () => {
+      guest2.validateUser('customer2');
+      expect(guest2.id).to.equal(2);
+      expect(guest2.isUser).to.equal(true);
+    });
+
+    it.only('should have no bookings to start', () => {
+      expect(guest2.pastStays).to.deep.equal([]);
+      expect(guest2.currentStays).to.deep.equal([]);
+      expect(guest2.futureStays).to.deep.equal([]);
+    });
+
+    it.only('should be able to find guests past stays', () => {
+      guest.validateUser('customer1')
+      guest.getPastStays(bookingsTest)
+      expect(guest.pastStays).to.deep.equal([bookingsTest[4]])
+    })
+
+    
+
   })
 })

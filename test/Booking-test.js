@@ -41,7 +41,6 @@ describe('Bookings', () => {
   it('should be able to filter available rooms by their roomType property', () => {
     
     booking.checkAvailableRooms("2020/04/22")
-    console.log(booking.checkAvailableRooms("2020/04/22"))
     booking.filterByRoomType('residential suite')
     expect(booking.filterByRoomType('residential suite')).to.deep.equal(booking.filterByRoomType('residential suite'))
 

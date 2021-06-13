@@ -127,6 +127,14 @@ const roomsTest = [{
   "bedSize": "queen",
   "numBeds": 2,
   "costPerNight": 176.36
+}, 
+{
+  "number": 12,
+  "roomType": "single room",
+  "bidet": false,
+  "bedSize": "twin",
+  "numBeds": 2,
+  "costPerNight": 172.09
 }
 ];
 
