@@ -10,7 +10,7 @@ const checkForError = (response) => {
 const fetchGuestData = () => {
   return fetch('http://localhost:3001/api/v1/customers')
     .then(response => checkForError(response))
-    .catch(console.error('customer api error'))
+    .catch(error => console.error(`Customer API Error: ${error.message}`));
 };
 
 let randomNumber = Math.floor(Math.random() * 50);
@@ -24,23 +24,19 @@ const fetchOneGuest = (id) => {
 const fetchRoomsData = () => {
   return fetch('http://localhost:3001/api/v1/rooms')
     .then(response => checkForError(response))
-    .catch(console.error('room api error'));
+    .catch(error => console.error(`Customer API Error: ${error.message}`));
 };
 
 const fetchBookingsData = () => {
   return fetch('	http://localhost:3001/api/v1/bookings')
     .then(response => checkForError(response))
-    .catch(console.error('all bookings api error'));
+    .catch(error => console.error(`Customer API Error: ${error.message}`));
 };
 
-const fetchAllData = () => {
-  Promise.all([fetchGuestData(), fetchRoomsData(), fetchBookingsData()])
-    .then(data => makeFetchData(data))
-};
+
 
 
 export default {
-  fetchAllData,
   fetchBookingsData,
   fetchRoomsData,
   fetchGuestData,
