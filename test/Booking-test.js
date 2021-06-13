@@ -4,10 +4,12 @@ import Booking from '../src/Booking.js';
 import { bookingsTest, roomsTest } from './testDataSet';
 
 describe('Bookings', () => {
-  let booking1;
+  let booking;
+  let booking2
 
   beforeEach(() => {
-    booking1 = new Booking(bookingInfo, roomInfo)
+    booking = new Booking(bookingsTest, roomsTest, '2020/04/22');
+    booking2 = new Booking(bookingsTest, roomsTest, "2021/03/02");
   });
 
   it('should be a function', () => {
@@ -18,30 +20,30 @@ describe('Bookings', () => {
     expect(booking).to.be.an.instanceOf(Booking);
   });
 
-  it('should have hold all rooms and bookings', () => {
-      expect(booking.bookings).to.deep.equal(bookingInfo);
-      expect(booking.rooms).to.deep.equal(roomInfo);
+  it('should be holding all rooms and bookings', () => {
+    expect(booking.bookings).to.deep.equal(bookingsTest);
+    expect(booking.rooms).to.deep.equal(roomsTest);
   });
 
   it('should have a default empty array for available rooms', () => {
-      expect(booking.roomsAvailable).to.deep.equal([]);
+    expect(booking.roomsAvailable).to.deep.equal([]);
+  });
+
+  it('should have a date', () => {
+    expect(booking.date).to.equal("2020/04/22")
   });
 
   it('should be able to view available rooms for a given date', () => {
-
+    expect(booking.checkAvailableRooms("2020/04/22")).to.deep.equal(booking.roomsAvailable)
   })
 
-  it('should tell a user if no rooms are available for that specific date', () => {
-
-  });
-
   it('should be able to filter available rooms by their roomType property', () => {
+    
+    booking.checkAvailableRooms("2020/04/22")
+    console.log(booking.checkAvailableRooms("2020/04/22"))
+    booking.filterByRoomType('residential suite')
+    expect(booking.filterByRoomType('residential suite')).to.deep.equal(booking.filterByRoomType('residential suite'))
 
   });
-
-  it('should fiercely apologize to the user if a specific roomType is not available for that day', () => {
-
-  });
-
 
 })
