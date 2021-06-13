@@ -33,10 +33,10 @@ class Booking {
     }
     this.roomsAvailable.filter(room => room.roomType === roomType)
 
-    if(!this.roomsAvailable.length) {
-        return "We're so sorry, those types of rooms are haunted on this booking date!"
+    if (!this.roomsAvailable.length) {
+      return "We're so sorry, those types of rooms are haunted on this booking date!"
     } else {
-        return this.roomsAvailable
+      return this.roomsAvailable
     }
    
   }
