@@ -38,15 +38,20 @@ describe('Guest', () => {
     it.only('should be able to find guests past stays', () => {
       guest.validateUser('customer1');
       guest.getPastStays(bookingsTest);
-      console.log(guest.getPastStays(bookingsTest))
       expect(guest.pastStays).to.deep.equal([bookingsTest[4]]);
     });
 
-    it.only('should return a statement if no prior bookings exist', () => {
-      guest3.validateUser('customer3')
-      guest3.getPastStays(bookingsTest)
-      console.log(guest3.getPastStays(bookingsTest))
-      expect(guest3.getPastStays(bookingsTest)).to.equal('You have not stayed with us before')
+    it('should return a statement if no prior bookings exist', () => {
+      guest3.validateUser('customer3');
+      guest3.getPastStays(bookingsTest);
+      expect(guest3.getPastStays(bookingsTest)).to.equal('You have not stayed with us before');
+    });
+
+    it.only('should should calculate the total amount spent', () => {
+      guest.validateUser('customer1')
+      guest.getPastStays(bookingsTest);
+      guest.calculateTotalSpent(roomsTest);
+      expect(guest.totalSpent).to.equal(172.09)
     })
 
     
