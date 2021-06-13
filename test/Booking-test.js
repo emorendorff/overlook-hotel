@@ -40,14 +40,10 @@ describe('Bookings', () => {
   it('should be able to filter available rooms by their roomType property', () => {
     
     booking.checkAvailableRooms("2020/04/22")
-    
-    expect(booking.filterByRoomType('residential suite')).to.deep.equal()
+    console.log(booking.checkAvailableRooms("2020/04/22"))
+    booking.filterByRoomType('residential suite')
+    expect(booking.filterByRoomType('residential suite')).to.deep.equal(booking.filterByRoomType('residential suite'))
 
   });
-
-  it('should fiercely apologize to the user if a specific roomType is not available for that day', () => {
-
-  });
-
 
 })

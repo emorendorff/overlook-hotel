@@ -1,4 +1,3 @@
-import { bookingsTest, roomsTest } from "../test/testDataSet";
 
 class Booking {
   constructor(bookingsTest, roomsTest, date) {
@@ -32,7 +31,14 @@ class Booking {
     if (roomType === 'All') {
       return this.roomsAvailable
     }
-    return this.roomsAvailable.filter(room => room.roomType === roomtype)
+    this.roomsAvailable.filter(room => room.roomType === roomType)
+
+    if(!this.roomsAvailable.length) {
+        return "We're so sorry, those types of rooms are haunted on this booking date!"
+    } else {
+        return this.roomsAvailable
+    }
+   
   }
 }
 
