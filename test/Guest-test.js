@@ -1,29 +1,15 @@
 import { expect } from 'chai'
 import Guest from '../src/Guest.js'
+import { bookingsTest, roomsTest, customersTest } from './testDataSet';
 
 describe('Guest', () => {
-  let guest 
-  let guest2 
-  let guest3
+  let guest;
+  let guest2;
+  let guest3;
 
   beforeEach(() => {
-    users = [ 
-      {
-        "id": 1,
-        "name": "Leatha Ullrich"
-      },
-      {
-        "id": 2,
-        "name": "Rocio Schuster"
-      },
-      {
-        "id": 3,
-        "name": "Kelvin Schiller"
-      },
-      {
-        "id": 4,
-        "name": "Kennedi Emard"
-      }
-    ];
+    guest = new Guest('customer1', customersTest)
+    guest2 = new Guest('customer2', customersTest)
+    guest3 = new Guest()
   })
 })

@@ -1,5 +1,6 @@
-import chai from 'chai';
-const expect = chai.expect;
+/* eslint-disable max-len */
+
+import { expect } from 'chai'
 import Booking from '../src/Booking.js';
 import { bookingsTest, roomsTest } from './testDataSet';
 
