@@ -2,8 +2,8 @@ class User {
   constructor(userID) {
     this.userID = userID;
     this.password = 'overlook2021';
-    this.totalSpent = 0
     this.isUser = false;
+    this.totalSpent = 0;
     this.id = 0;
   }
 

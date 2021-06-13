@@ -1,3 +1,34 @@
+const customersTest = [
+  {
+    "id": 1,
+    "name": "Leatha Ullrich"
+  },
+  {
+    "id": 2,
+    "name": "Rocio Schuster"
+  },
+  {
+    "id": 3,
+    "name": "Kelvin Schiller"
+  },
+  {
+    "id": 4,
+    "name": "Kennedi Emard"
+  },
+  {
+    "id": 5,
+    "name": "Rhiannon Little"
+  },
+  {
+    "id": 6,
+    "name": "Fleta Schuppe"
+  },
+  {
+    "id": 7,
+    "name": "Dell Rath"
+  }];
+
+
 const bookingsTest = [{
   "id": "5fwrgu4i7k55hl6sz",
   "userID": 9,
@@ -96,8 +127,16 @@ const roomsTest = [{
   "bedSize": "queen",
   "numBeds": 2,
   "costPerNight": 176.36
+}, 
+{
+  "number": 12,
+  "roomType": "single room",
+  "bidet": false,
+  "bedSize": "twin",
+  "numBeds": 2,
+  "costPerNight": 172.09
 }
 ];
 
 
-export { bookingsTest, roomsTest }
+export { bookingsTest, roomsTest, customersTest }
