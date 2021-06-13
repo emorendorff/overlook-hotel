@@ -1,19 +1,21 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/index.scss';
+import fetchcalls from './fetch-calls';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/axe.png'
 
+let user, booking, guest 
 
-// export function fetchAllData() {
-//   .fetchAllData();
-// }
+function onLoad() {
+  fetchcalls.fetchAllData()
+    .then((promise) => {
+    const allGuests = createGuestInstances(promise[0])
+    
+    }) 
+}
 
-// export function makeFetchData(data) {
-//   allCustomerData = data[0].customers;
-//   allRoomsData = data[1].rooms;
-//   allBookingsData = data[2].bookings;
-// }
-
-
+const createGuestInstances = (fetchGuestData) => {
+    
+}
