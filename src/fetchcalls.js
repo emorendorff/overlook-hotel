@@ -13,8 +13,6 @@ const fetchGuestData = () => {
     .catch(error => console.error(`Customer API Error: ${error.message}`));
 };
 
-let randomNumber = Math.floor(Math.random() * 50);
-
 const fetchOneGuest = (id) => {
   return fetch(`http://localhost:3001/api/v1/customers/${id}`)
     .then(response => checkForError(response))
