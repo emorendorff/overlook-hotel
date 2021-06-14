@@ -1,9 +1,9 @@
 
 class Booking {
-  constructor(bookingsTest, roomsTest, date) {
+  constructor(bookingsTest, roomsTest) {
     this.rooms = roomsTest;
     this.bookings = bookingsTest;
-    this.date = date
+    // this.date = date
     this.roomsAvailable = [];
   }
 

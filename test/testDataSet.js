@@ -29,7 +29,9 @@ const customersTest = [
   }];
 
 
-const bookingsTest = [{
+const bookingsTest = { 
+  "bookings": [
+   {
   "id": "5fwrgu4i7k55hl6sz",
   "userID": 9,
   "date": "2020/04/22",
@@ -78,7 +80,8 @@ const bookingsTest = [{
   "roomNumber": 23,
   "roomServiceCharges": []
 }
-];
+]
+}
 
 const roomsTest = [{
   "number": 2,
