@@ -21,17 +21,19 @@
     <section class="book-room-container">
       <h3 class="box-headers">STAY WITH US</h3>
       <div class="line"></div>
-      <div class='left-side-input'>
+      <section class='left-side-input'>
         <label for='start-date'><h5>DATE:</h5></label>
         <div class='date-container'>
           <input type='date' name='start-date' value='' id=startDate aria-label="date selection" alt='Enter the date here.'>            
           <button type='button' name='check-availability' id='checkAvailabilityBtn'>Check Availability</button>
         </div>
-      </div>
+        <section class="frame" id="roomsAvailable"></section>
+        </section>
+      </section>
     </section>
     <aside class='past-bookings-container' id='pastBookingsHolder'>
-      <h3 class='section-header'>YOUR PRIOR STAYS WITH US</h3>
-      <section class="old-bookings" id='oldBookings'> 
+      <h3 class='section-header'>YOUR PRIOR STAYS</h3>
+      <section class="old-bookings frame" id='oldBookings'> 
       </section>
       <section class='total-section'></section>
         <h4>TOTAL AMOUNT:</h4>

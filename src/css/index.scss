@@ -46,6 +46,20 @@ button {
   letter-spacing: .15em;
 }
 
+.frame {
+  border: .5em solid $blush;
+  padding: 1em;
+  margin: 1em;
+  height: 20em;
+  width: 20em;
+  overflow: scroll;
+}
+
+// border: 1em solid white;
+// height: 30em;
+// margin: 1em 0;
+// overflow: scroll;
+
   //navigation 
 
   .guest-navigation {
@@ -67,4 +81,7 @@ button {
   .hide {
     display: none;
   }
-  
+
+  h4, h5 {
+    text-align: center;
+  }

@@ -38,7 +38,7 @@ class Guest {
   }
 
   calculateTotalSpent(roomsTest) {
-    this.totalSpent = roomsTest.reduce((sum, room) => {
+    this.totalSpent = roomsTest.rooms.reduce((sum, room) => {
       this.pastStays.forEach(booking => {
         if (booking.roomNumber === room.number) {
           sum += room.costPerNight
@@ -46,6 +46,8 @@ class Guest {
       })
       return sum
     }, 0);
+    let fixedNum = Number((this.totalSpent).toFixed(2))
+    this.totalSpent = fixedNum
     return this.totalSpent
   }
 }

@@ -19,6 +19,7 @@ const userNameDisplay = document.getElementById('userNameDisplay');
 const logOutBtn = document.getElementById('logOutBtn');
 const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
 const oldBookings = document.getElementById('oldBookings');
+const totalAmount = document.getElementById('totalAmount');
 
 let randomNumber = Math.floor(Math.random() * 50);
 
@@ -28,24 +29,21 @@ window.onload = onLoad();
 
 function onLoad() {
   fetchAllData();
-  // displayPastStays(oneGuest1)
-  // console.log('customer', customers)
-  // console.log('bookings', bookings)
-  // console.log('rooms', rooms)
-  // console.log('oneguest', oneGuest)
 }
 
 function fetchAllData() {
   customers = fetchcalls.fetchGuestData();
   bookings = fetchcalls.fetchBookingsData();
   rooms = fetchcalls.fetchRoomsData();
- oneGuest = fetchcalls.fetchOneGuest(randomNumber)
+  oneGuest = fetchcalls.fetchOneGuest(randomNumber)
   return Promise.all([customers, bookings, rooms, oneGuest])
     .then(data => {
       createInstances(data[0], data[1], data[2], data[3]);
       console.log('this is my data', oneGuest1)
-      console.log("these are the bookingInstances", bookingsInstances.bookings)
+      console.log("these are the bookingInstances", bookingsInstances.rooms)
       displayPastStays(oneGuest1);
+      displayTotalAmount(oneGuest1)
+      // displayName(oneGuest1);
     })
   // console.log('customer', customers)
   // console.log('bookings', bookings)
@@ -63,11 +61,10 @@ function createInstances(customers, bookings, rooms, oneGuest) {
   oneGuest1 = new Guest(oneGuest)
 }
 
-//only if you have time fool 
-// function displayName() {
+ 
+// function displayName(oneGuest1) {
 //   const guestName = document.querySelector('.guest-nav-name')
-//   console.log(oneGuest.name)
-//   guestName.innerText = `Welcome ${oneGuest.name}!`;
+//   guestName.innerText = `Welcome ${oneGuest1.name}!`;
 // }
 
 function displayPastStays(oneGuest1) {
@@ -78,11 +75,14 @@ function displayPastStays(oneGuest1) {
     oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">You have not stayed with us before</p>`);
   } else {
     oneGuest1.pastStays.forEach(booking => {
-      pastBookingsHolder.insertAdjacentHTML('beforeend', `<li class="history">${booking.date} in room number ${booking.roomNumber}</li>`);
+      oldBookings.insertAdjacentHTML('beforeend', `<li class="history">${booking.date} in room ${booking.roomNumber}</li>`);
     });
   }
-}
+};
 
-// function displayTotalAmount()
+function displayTotalAmount(oneGuest1) {
+  oneGuest1.calculateTotalSpent(bookingsInstances.rooms)
+  totalAmount.innerText = `$${oneGuest1.totalSpent}`
+}
 
 
