@@ -14,7 +14,6 @@ let currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 console.log(currentDate)
 
 //-------Query Selectors-------//
-const calendar = document.getElementById('startDate');
 const userNameDisplay = document.getElementById('userNameDisplay');
 const logOutBtn = document.getElementById('logOutBtn');
 const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
@@ -119,6 +118,8 @@ function searchRoomType() {
     <b>Cost:</b> $${room.costPerNight}
     </li>`
   })
-}
+};
+
+
 
 

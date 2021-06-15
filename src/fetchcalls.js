@@ -34,6 +34,7 @@ const fetchBookingsData = () => {
 
 
 
+
 export default {
   fetchBookingsData,
   fetchRoomsData,
