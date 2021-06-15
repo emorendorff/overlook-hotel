@@ -74,9 +74,6 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden');
 }
-
-
- 
 // function displayName(oneGuest1) {
 //   const guestName = document.querySelector('.guest-nav-name')
 //   guestName.innerText = `Welcome ${oneGuest1.name}!`;
@@ -138,8 +135,6 @@ function searchRoomType() {
   })
 }
 
-
-
 function bookRoom(e) {
   console.log(e.target)
   if (e.target.classList.contains('book-room-btn')) {
@@ -152,7 +147,3 @@ function bookRoom(e) {
   e.target.closest('button').setAttribute('disabled', 'true');
   e.target.closest('button').innerText = 'Booked!'
 }
-
-
-
-
