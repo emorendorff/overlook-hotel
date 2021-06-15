@@ -30,7 +30,7 @@ class Booking {
   }
 
   filterByRoomType(roomType) {
-    if (roomType === 'All') {
+    if (roomType === 'All Rooms') {
       return this.roomsAvailable
     }
     this.roomsAvailable.filter(room => room.roomType === roomType)

@@ -12,7 +12,7 @@
 <body>
   <header class="navigation-head">
     <nav class="guest-navigation">
-      <h2>The Overlook Hotel</h2>
+      <h1>The Overlook Hotel</h1>
       <h3 class="userNameDisplay">Welcome, user!</h3>
       <button type="button" class='logout-btn' id=logoutBtn>Log Out</button>
     </nav>
@@ -28,6 +28,17 @@
           <button type='button' name='check-availability' id='checkAvailabilityBtn'>Check Availability</button>
         </div>
         <section class="available frame" id="roomsAvailable"></section>
+        <div class="filter-and-book-btns">
+          <button type="button" name="confirm-stay" id="confirmStay">CONFIRM STAY</button>
+          <label for="filter-room-type">FILTER BY ROOM</label>
+          <select name="room-type" id="roomTypeFilter">
+            <option value="All Rooms">All Rooms</option>
+            <option value="single room">Single Room</option>
+            <option value="suite">Suite</option>
+            <option value="residential suite">Residential Suite</option>
+            <option value="junior suite">Junior Suite</option>
+            </select>
+        </div>
         </section>
       </section>
     </section>

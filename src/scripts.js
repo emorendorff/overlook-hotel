@@ -92,17 +92,15 @@ function displayTotalAmount(oneGuest1) {
 
 function displayAvailableRooms() {
   let date = calendarStart.value.split("-").join('/')
-  console.log('date me', date)
+  roomsAvailable.innerHTML = ''
   let eachAvailableRoom = bookingsInstances.checkAvailableRooms(date)
   let iteratedRooms = eachAvailableRoom.forEach(room => {
     roomsAvailable.innerHTML += `<li class='rooms'><b>Room Type:</b> ${room.roomType}<br>
-    <b>Bed Size: ${room.bedSize}</b><br>
+    <b>Bed Size:</b> ${room.bedSize}</b><br>
     <b>Number of Beds:</b> ${room.numBeds}<br>
     <b>Cost:</b> $${room.costPerNight}
     </li>`
   })
-  console.log('rooms available', bookingsInstances.roomsAvailable)
-  console.log(bookingsInstances.checkAvailableRooms(date))
 }
 
 
