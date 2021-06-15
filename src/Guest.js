@@ -1,16 +1,34 @@
 import User from './User'
 
-class Guest extends User {
-  constructor(userID) {
-    super(userID)
+class Guest {
+  constructor(guest) {
+    this.id = guest.id;
+    this.name = guest.name
+    this.password = 'overlook2021';
+    this.isUser = false;
+    this.totalSpent = 0;
+    // this.id = 0;
     this.pastStays = [];
     this.currentStays = [];
     this.futureStays = [];
   }
 
+  // validateUser(userID) {
+  //   if (userID.startsWith('customer')) {
+  //     this.getIdNumber(userID) 
+  //   }
+  // }
+  // getIdNumber(userID) {
+  //   this.id = Number.parseInt(userID.slice(8)) 
+  //   if (this.id > 0 && this.id <= 50) {
+  //     this.isUser = true
+  //   }
+  // }
+
   getPastStays(bookingsTest) {
-    this.validateUser(this.userID)
-    let past = bookingsTest.filter(booking => booking.userID === this.id)
+    // this.validateUser(this.userID)
+    let past = bookingsTest.bookings.filter(booking => booking.userID === this.id)
+    
     this.pastStays = past
     if (!this.pastStays.length) {
       return 'You have not stayed with us before'
@@ -20,7 +38,7 @@ class Guest extends User {
   }
 
   calculateTotalSpent(roomsTest) {
-    this.totalSpent = roomsTest.reduce((sum, room) => {
+    this.totalSpent = roomsTest.rooms.reduce((sum, room) => {
       this.pastStays.forEach(booking => {
         if (booking.roomNumber === room.number) {
           sum += room.costPerNight
@@ -28,11 +46,11 @@ class Guest extends User {
       })
       return sum
     }, 0);
+    let fixedNum = Number((this.totalSpent).toFixed(2))
+    this.totalSpent = fixedNum
     return this.totalSpent
   }
 }
-
-
 
 
 export default Guest

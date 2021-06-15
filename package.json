@@ -28,5 +28,9 @@
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+  },
+  "dependencies": {
+    "datejs": "^1.0.0-rc3",
+    "dayjs": "^1.10.5"
   }
 }

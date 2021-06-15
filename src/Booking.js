@@ -1,24 +1,26 @@
 
 class Booking {
-  constructor(bookingsTest, roomsTest, date) {
+  constructor(bookingsTest, roomsTest) {
     this.rooms = roomsTest;
     this.bookings = bookingsTest;
-    this.date = date
+    // this.date = date
     this.roomsAvailable = [];
   }
 
   checkAvailableRooms(date) {
-    //gonna need a .value for the dom from user calendar
-    console.log(date)
-    const alreadyBooked = this.bookings.reduce((acc, booking) => {
-      if (this.bookings.date === date) {
-        acc.push(booking.roomNumber)
+    const alreadyBooked = this.bookings.bookings.reduce((acc, booking) => {
+      if (booking.date === date) {
+        console.log(booking.date)
+        acc.push('booking date', booking.roomNumber)
       }
+      
       return acc
     }, []);
+    console.log('ALREADY BOOKED ROOMS', alreadyBooked)
 
-    const availableRoomNums = this.rooms.filter(room => !alreadyBooked.includes(room.number))
+    const availableRoomNums = this.rooms.rooms.filter(room => !alreadyBooked.includes(room.number))
     this.roomsAvailable = availableRoomNums;
+    console.log('AVAILABLE!!', this.roomsAvailable)
     if (this.roomsAvailable.length) {
       return this.roomsAvailable
     } else {
@@ -28,15 +30,18 @@ class Booking {
   }
 
   filterByRoomType(roomType) {
-    if (roomType === 'All') {
+    console.log('room type', roomType)
+
+    if (roomType === 'All Rooms') {
       return this.roomsAvailable
     }
-    this.roomsAvailable.filter(room => room.roomType === roomType)
-
-    if (!this.roomsAvailable.length) {
+    console.log('rooms available', this.roomsAvailable)
+    let filteredRooms = this.roomsAvailable.filter(room => room.roomType === roomType)
+    console.log('filtered rooms', filteredRooms)
+    if (!filteredRooms.length) {
       return "We're so sorry, those types of rooms are haunted on this booking date!"
     } else {
-      return this.roomsAvailable
+      return filteredRooms
     }
    
   }

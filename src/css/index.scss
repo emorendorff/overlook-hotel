@@ -46,6 +46,28 @@ button {
   letter-spacing: .15em;
 }
 
+.frame {
+  border: .5em solid $blush;
+  padding: 1em;
+  margin: 1em;
+  height: 20em;
+  width: 20em;
+  overflow: scroll;
+}
+
+.right-frame {
+  border: .5em solid $blush;
+  padding: 1em;
+  margin: 1em;
+  height: 10em;
+  overflow: scroll;
+}
+
+// border: 1em solid white;
+// height: 30em;
+// margin: 1em 0;
+// overflow: scroll;
+
   //navigation 
 
   .guest-navigation {
@@ -54,9 +76,20 @@ button {
     align-items: center;
   }
 
+  li { 
+    list-style-type: none;
+    padding: .2em;
+    font-family: $secondary-font;
+  }
+
+  //this would be a great time to implement a scroll bar lol
+
   //everything else
 
   .hide {
     display: none;
   }
-  
+
+  h4, h5 {
+    text-align: center;
+  }
