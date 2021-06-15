@@ -30,15 +30,18 @@ class Booking {
   }
 
   filterByRoomType(roomType) {
+    console.log('room type', roomType)
+
     if (roomType === 'All Rooms') {
       return this.roomsAvailable
     }
-    this.roomsAvailable.filter(room => room.roomType === roomType)
-
-    if (!this.roomsAvailable.length) {
+    console.log('rooms available', this.roomsAvailable)
+    let filteredRooms = this.roomsAvailable.filter(room => room.roomType === roomType)
+    console.log('filtered rooms', filteredRooms)
+    if (!filteredRooms.length) {
       return "We're so sorry, those types of rooms are haunted on this booking date!"
     } else {
-      return this.roomsAvailable
+      return filteredRooms
     }
    
   }

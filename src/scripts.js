@@ -21,7 +21,9 @@ const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
 const oldBookings = document.getElementById('oldBookings');
 const totalAmount = document.getElementById('totalAmount');
 const calendarStart = document.getElementById('startDate');
-const roomsAvailable = document.getElementById('roomsAvailable')
+const roomsAvailable = document.getElementById('roomsAvailable');
+const roomTypeFilter = document.getElementById('roomTypeFilter');
+const searchByTypeSubmitBtn = document.getElementById('searchByTypeSubmitBtn');
 
 
 let randomNumber = Math.floor(Math.random() * 50);
@@ -29,8 +31,11 @@ let randomNumber = Math.floor(Math.random() * 50);
 window.onload = onLoad();
 checkAvailabilityBtn.addEventListener('click', () => 
   displayAvailableRooms());
+searchByTypeSubmitBtn.addEventListener('click', () => searchRoomType())
 
-
+window.addEventListener('click', function (event) {
+  console.log("eventTest", event.target)
+} )
 
 function onLoad() {
   fetchAllData();
@@ -92,9 +97,22 @@ function displayTotalAmount(oneGuest1) {
 
 function displayAvailableRooms() {
   let date = calendarStart.value.split("-").join('/')
-  roomsAvailable.innerHTML = ''
+  roomsAvailable.innerHTML = ``
   let eachAvailableRoom = bookingsInstances.checkAvailableRooms(date)
   let iteratedRooms = eachAvailableRoom.forEach(room => {
+    roomsAvailable.innerHTML += `<li class='rooms'><b>Room Type:</b> ${room.roomType}<br>
+    <b>Bed Size:</b> ${room.bedSize}</b><br>
+    <b>Number of Beds:</b> ${room.numBeds}<br>
+    <b>Cost:</b> $${room.costPerNight}
+    </li>`
+  })
+}
+
+function searchRoomType() {
+  let filterType = roomTypeFilter.value;
+  let typeResults = bookingsInstances.filterByRoomType(filterType);
+  roomsAvailable.innerHTML = ``
+  let eachFilteredRoom = typeResults.forEach(room => {
     roomsAvailable.innerHTML += `<li class='rooms'><b>Room Type:</b> ${room.roomType}<br>
     <b>Bed Size:</b> ${room.bedSize}</b><br>
     <b>Number of Beds:</b> ${room.numBeds}<br>
