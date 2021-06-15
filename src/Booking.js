@@ -8,17 +8,19 @@ class Booking {
   }
 
   checkAvailableRooms(date) {
-    //gonna need a .value for the dom from user calendar
-    console.log(date)
-    const alreadyBooked = this.bookings.reduce((acc, booking) => {
-      if (this.bookings.date === date) {
-        acc.push(booking.roomNumber)
+    const alreadyBooked = this.bookings.bookings.reduce((acc, booking) => {
+      if (booking.date === date) {
+        console.log(booking.date)
+        acc.push('booking date', booking.roomNumber)
       }
+      
       return acc
     }, []);
+    console.log('ALREADY BOOKED ROOMS', alreadyBooked)
 
-    const availableRoomNums = this.rooms.filter(room => !alreadyBooked.includes(room.number))
+    const availableRoomNums = this.rooms.rooms.filter(room => !alreadyBooked.includes(room.number))
     this.roomsAvailable = availableRoomNums;
+    console.log('AVAILABLE!!', this.roomsAvailable)
     if (this.roomsAvailable.length) {
       return this.roomsAvailable
     } else {

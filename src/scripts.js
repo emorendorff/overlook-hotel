@@ -20,10 +20,15 @@ const logOutBtn = document.getElementById('logOutBtn');
 const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
 const oldBookings = document.getElementById('oldBookings');
 const totalAmount = document.getElementById('totalAmount');
+const calendarStart = document.getElementById('startDate');
+const roomsAvailable = document.getElementById('roomsAvailable')
+
 
 let randomNumber = Math.floor(Math.random() * 50);
 
 window.onload = onLoad();
+checkAvailabilityBtn.addEventListener('click', () => 
+  displayAvailableRooms());
 
 
 
@@ -35,7 +40,7 @@ function fetchAllData() {
   customers = fetchcalls.fetchGuestData();
   bookings = fetchcalls.fetchBookingsData();
   rooms = fetchcalls.fetchRoomsData();
-  oneGuest = fetchcalls.fetchOneGuest(randomNumber)
+  oneGuest = fetchcalls.fetchOneGuest(1)
   return Promise.all([customers, bookings, rooms, oneGuest])
     .then(data => {
       createInstances(data[0], data[1], data[2], data[3]);
@@ -83,6 +88,15 @@ function displayPastStays(oneGuest1) {
 function displayTotalAmount(oneGuest1) {
   oneGuest1.calculateTotalSpent(bookingsInstances.rooms)
   totalAmount.innerText = `$${oneGuest1.totalSpent}`
+}
+
+function displayAvailableRooms() {
+  let date = calendarStart.value.split("-").join('/')
+  console.log('date me', date)
+  bookingsInstances.checkAvailableRooms(date)
+  // roomsAvailable.insertAdjacentElement('afterbegin', `<li class='rooms'> ${bookingsInstances.roomsAvailable}</li>`)
+  console.log('rooms available', bookingsInstances.roomsAvailable)
+  console.log(bookingsInstances.checkAvailableRooms(date))
 }
 
 
