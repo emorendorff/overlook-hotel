@@ -82,6 +82,17 @@ button {
     font-family: $secondary-font;
   }
 
+  // .rooms:hover {
+  //   background-color: white;
+  //   opacity: 60%;
+  // }
+
+  // .selected {
+  //   border: .20em solid $blush;
+  //   background-color: white;
+  //   opacity: 60%;
+  // }
+
   //this would be a great time to implement a scroll bar lol
 
   //everything else
@@ -89,6 +100,7 @@ button {
   .hide {
     display: none;
   }
+
 
   h4, h5 {
     text-align: center;
