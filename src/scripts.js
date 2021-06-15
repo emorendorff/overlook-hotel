@@ -1,4 +1,3 @@
-
 //----------Imports--------------//
 import './css/index.scss';
 import fetchcalls from './fetchcalls';
@@ -9,9 +8,8 @@ let dayjs = require('dayjs');
 import './images/axe.png'
 
 //-----Globals(mr worldwide)---//
-let user, rooms, bookings, customers,  bookingsTest, roomsTest, oneGuest1, oneGuest, bookingsInstances;
+let rooms, bookings, customers, oneGuest1, oneGuest, bookingsInstances;
 let currentDate = dayjs(new Date()).format('YYYY/MM/DD');
-console.log(currentDate)
 
 //-------Query Selectors-------//
 const userNameDisplay = document.getElementById('userNameDisplay');
@@ -25,20 +23,20 @@ const roomTypeFilter = document.getElementById('roomTypeFilter');
 const searchByTypeSubmitBtn = document.getElementById('searchByTypeSubmitBtn');
 const bookRoomBtn = document.getElementsByClassName('book-room-btn');
 
+let randomNumber = Math.floor(Math.random() * 50);
+
+window.onload = fetchAllData();
+
+checkAvailabilityBtn.addEventListener('click', () => 
+  displayAvailableRooms());
+
+searchByTypeSubmitBtn.addEventListener('click', () => searchRoomType())
+
 roomsAvailable.addEventListener('click', (e) => {
-  if(e.target.closest('button')) {
+  if (e.target.closest('button')) {
     bookRoom(e)
   }
 })
-
-
-
-let randomNumber = Math.floor(Math.random() * 50);
-
-window.onload = onLoad();
-checkAvailabilityBtn.addEventListener('click', () => 
-  displayAvailableRooms());
-searchByTypeSubmitBtn.addEventListener('click', () => searchRoomType())
 
 window.addEventListener('click', function (event) {
   console.log("eventTest", event.target)
@@ -50,11 +48,6 @@ window.addEventListener('click', function (event) {
 //   }
 // })
 
-
-function onLoad() {
-  fetchAllData();
-}
-
 function fetchAllData() {
   customers = fetchcalls.fetchGuestData();
   bookings = fetchcalls.fetchBookingsData();
@@ -63,24 +56,13 @@ function fetchAllData() {
   return Promise.all([customers, bookings, rooms, oneGuest])
     .then(data => {
       createInstances(data[0], data[1], data[2], data[3]);
-      console.log('this is my data', oneGuest1)
-      console.log("these are the bookingInstances", bookingsInstances.rooms)
       displayPastStays(oneGuest1);
       displayTotalAmount(oneGuest1)
-      // displayName(oneGuest1);
     })
-  // console.log('customer', customers)
-  // console.log('bookings', bookings)
-  // console.log('rooms', rooms)
-  // console.log('oneguest', oneGuest)
-  
 }
 
 
 function createInstances(customers, bookings, rooms, oneGuest) {
-//   customersTest = customers;
-  // bookingsTest = bookings;
-  // roomsTest = rooms;
   bookingsInstances = new Booking(bookings, rooms)
   oneGuest1 = new Guest(oneGuest)
 }
@@ -154,28 +136,21 @@ function searchRoomType() {
       </li>
     <ul class='begin-available-rooms'>`
   })
-};
+}
 
 
 
 function bookRoom(e) {
   console.log(e.target)
-  if (event.target.classList.contains('confirm-stay-btn')) {
-    console.log('event', e.target.id)
-    let roomNumber = e.target.closest('button').id
-    console.log('ROOM', roomNumber)
+  if (e.target.classList.contains('book-room-btn')) {
+    let roomNumber = parseInt(e.target.closest('button').id)
     let date = dayjs(calendarStart.value).format('YYYY/MM/DD');
-    console.log('date', date)
-    console.log(oneGuest1)
-    fetchcalls.postNewBooking(oneGuest1, date, roomNumber)
-    console.log(fetchcalls.postNewBooking(oneGuest1, date, roomNumber))
-
+    fetchcalls.postNewBooking(oneGuest1.id, date, roomNumber)
   } else {
     e.preventDefault();
   }
   e.target.closest('button').setAttribute('disabled', 'true');
   e.target.closest('button').innerText = 'Booked!'
-
 }
 
 
