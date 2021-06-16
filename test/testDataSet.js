@@ -83,63 +83,65 @@ const bookingsTest = {
   ]
 }
 
-const roomsTest = [{
-  "number": 2,
-  "roomType": "suite",
-  "bidet": false,
-  "bedSize": "full",
-  "numBeds": 2,
-  "costPerNight": 477.38
-},
-{
-  "number": 3,
-  "roomType": "single room",
-  "bidet": false,
-  "bedSize": "king",
-  "numBeds": 1,
-  "costPerNight": 491.14
-},
-{
-  "number": 4,
-  "roomType": "single room",
-  "bidet": false,
-  "bedSize": "queen",
-  "numBeds": 1,
-  "costPerNight": 429.44
-},
-{
-  "number": 5,
-  "roomType": "single room",
-  "bidet": true,
-  "bedSize": "queen",
-  "numBeds": 2,
-  "costPerNight": 340.17
-},
-{
-  "number": 15,
-  "roomType": "residential suite",
-  "bidet": false,
-  "bedSize": "full",
-  "numBeds": 1,
-  "costPerNight": 294.56
-},
-{
-  "number": 23,
-  "roomType": "residential suite",
-  "bidet": false,
-  "bedSize": "queen",
-  "numBeds": 2,
-  "costPerNight": 176.36
-}, 
-{
-  "number": 12,
-  "roomType": "single room",
-  "bidet": false,
-  "bedSize": "twin",
-  "numBeds": 2,
-  "costPerNight": 172.09
-}
-];
+const roomsTest = {
+  "rooms": [
+    {
+      "number": 2,
+      "roomType": "suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 2,
+      "costPerNight": 477.38
+    },
+    {
+      "number": 3,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "king",
+      "numBeds": 1,
+      "costPerNight": 491.14
+    },
+    {
+      "number": 4,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 429.44
+    },
+    {
+      "number": 5,
+      "roomType": "single room",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 2,
+      "costPerNight": 340.17
+    },
+    {
+      "number": 15,
+      "roomType": "residential suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 1,
+      "costPerNight": 294.56
+    },
+    {
+      "number": 23,
+      "roomType": "residential suite",
+      "bidet": false,
+      "bedSize": "queen",
+      "numBeds": 2,
+      "costPerNight": 176.36
+    }, 
+    {
+      "number": 12,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "twin",
+      "numBeds": 2,
+      "costPerNight": 172.09
+    }
+  ]}
 
 
 export { bookingsTest, roomsTest, customersTest }
