@@ -9,15 +9,25 @@
   <link rel="stylesheet" type="stylesheet" href="./src/css/index.scss">
   <title>Overlook Hotel</title>
 </head>
-<body>
-  <header class="navigation-head">
+<h1 id="login-header">Welcome to The Overlook Hotel</h1>
+<h2 id="subHeaderLogin">Please login in below</h2>
+  <div id="login-error-msg-holder">
+    <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+  </div>
+  <form id="login-form">
+    <input type="text" name="username" id="usernameField" class="login-form-field" placeholder="Username">
+    <input type="password" name="password" id="passwordField" class="login-form-field" placeholder="Password">
+    <button type="submit" value="Login" id="login-form-submit">Login</button>
+  </form>
+  <header class="navigation-head hidden" id="navigation">
     <nav class="guest-navigation">
       <h1>The Overlook Hotel</h1>
       <h3 class="userNameDisplay">Welcome, user!</h3>
       <button type="button" class='logout-btn' id=logoutBtn>Log Out</button>
     </nav>
   </header>
-  <main>
+<body>
+  <main class="hidden" id="mainPage">
     <section class="book-room-container">
       <h3 class="box-headers">STAY WITH US</h3>
       <div class="line"></div>
@@ -46,18 +56,25 @@
       </section>
     </section>
     <aside class='past-bookings-container' id='pastBookingsHolder'>
-      <h3 class='section-header'>PRIOR STAYS</h3>
+      <h3 class='section-header'>YOUR STAYS</h3>
       <section class="old-bookings right-frame" id='oldBookings'> 
-      <h3 class='section-header'>CURRENT RESERVATIONS</h3>
-      <section class="current-bookings right-frame" id='currentBookings'></section>
-      <h3 class='section-header'>UPCOMING STAYS</h3>
-      <section class="upcoming-bookings right-frame" id="upcomingBookings"></section>
       </section>
+      <div class="filter-and-book-btns">
+        <label for="filter-room-type">FILTER STAYS</label>
+        <select name="room-type" id="roomTypeFilter">
+          <option value="all stays">All Stays</option>
+          <option value="current stay">Current Stay</option>
+          <option value="future stay">Future Stays</option>
+        </select>
+        <div class="submit-search">
+        <input type="submit" class="submit-btn" value="">
+        <button type="button" name="search-filters" id="searchByTypeSubmitBtn">FILTER OPTIONS</button>
+        </div>
+      </div>
       <section class='total-section'></section>
         <h4>TOTAL AMOUNT:</h4>
         <h5 id='totalAmount'></h5>
-    </aside>
-      
+    </aside> 
   </main> 
   
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

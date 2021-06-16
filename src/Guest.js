@@ -7,19 +7,18 @@ class Guest {
     this.password = 'overlook2021';
     this.isUser = false;
     this.totalSpent = 0;
-    // this.id = 0;
     this.pastStays = [];
     this.currentStays = [];
     this.futureStays = [];
   }
 
-  // validateUser(userID) {
-  //   if (userID.startsWith('customer')) {
-  //     this.getIdNumber(userID) 
+  // validateUser(username) {
+  //   if (username.startsWith('customer')) {
+  //     this.getIdNumber(username) 
   //   }
   // }
-  // getIdNumber(userID) {
-  //   this.id = Number.parseInt(userID.slice(8)) 
+  // getIdNumber(username) {
+  //   this.id = Number.parseInt(username.slice(8)) 
   //   if (this.id > 0 && this.id <= 50) {
   //     this.isUser = true
   //   }

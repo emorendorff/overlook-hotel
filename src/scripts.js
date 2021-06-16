@@ -8,12 +8,12 @@ let dayjs = require('dayjs');
 import './images/axe.png'
 
 //-----Globals(mr worldwide)---//
-let rooms, bookings, customers, oneGuest1, oneGuest, bookingsInstances;
+let loginNumber, rooms, bookings, customers, oneGuest1, oneGuest, bookingsInstances;
 let currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 //-------Query Selectors-------//
 const userNameDisplay = document.getElementById('userNameDisplay');
-const logOutBtn = document.getElementById('logOutBtn');
+const logOutBtn = document.getElementById('logoutBtn');
 const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
 const oldBookings = document.getElementById('oldBookings');
 const totalAmount = document.getElementById('totalAmount');
@@ -22,10 +22,33 @@ const roomsAvailable = document.getElementById('roomsAvailable');
 const roomTypeFilter = document.getElementById('roomTypeFilter');
 const searchByTypeSubmitBtn = document.getElementById('searchByTypeSubmitBtn');
 const bookRoomBtn = document.getElementsByClassName('book-room-btn');
+const navigation = document.getElementById('navigation');
+const mainPage = document.getElementById('mainPage');
+const loginForm = document.getElementById('login-form');
+const usernameField = document.getElementById('usernameField');
+const passwordField = document.getElementById('passwordField');
+const loginHeader = document.getElementById('login-header');
+const loginButton = document.getElementById('login-form-submit');
+const loginErrorMsg = document.getElementById('login-error-msg');
+const subHeaderLogin = document.getElementById('subHeaderLogin')
 
-let randomNumber = Math.floor(Math.random() * 50);
+//-------------event listenters-----------------//
+window.onload = fetchAllData(), displayLogin();
 
-window.onload = fetchAllData();
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const username = loginForm.username.value;
+  const password = loginForm.password.value;
+  validateUser(username)
+  validatePassword(password)
+
+  if (validateUser(username) === true && validatePassword(password) === true) {
+    fetchSingleGuest()
+    displayGuestPage()
+  } else {
+    loginErrorMsg.style.opacity = 1;
+  }
+});
 
 checkAvailabilityBtn.addEventListener('click', () => 
   displayAvailableRooms());
@@ -36,48 +59,89 @@ roomsAvailable.addEventListener('click', (e) => {
   if (e.target.closest('button')) {
     bookRoom(e)
   }
-})
+});
+
+logOutBtn.addEventListener('click', () => location.reload())
 
 window.addEventListener('click', function (event) {
   console.log("eventTest", event.target)
-} )
+});
 
-// roomsAvailable.addEventListener('click', (e) => {
-//   if (e.target.classList.contains('rooms')) {
-//     e.target.classList.add('selected')
-//   }
-// })
+//--------------functions---------------//
+
+function validateUser(username) {
+  if (username.startsWith('customer')) {
+    loginNumber = Number.parseInt(username.slice(8))
+  }
+  if (loginNumber > 0 && loginNumber <= 50) {
+    return true
+  }
+}
+
+function validatePassword(password) {
+  if (password === 'overlook2021') {
+    return true
+  } else {
+    return false
+  }
+}
+
+function fetchSingleGuest() {
+  oneGuest = fetchcalls.fetchOneGuest(loginNumber);
+  return Promise.all([oneGuest])
+    .then(data => {
+      instantiateNewGuest(data[0]);
+      displayName(oneGuest1);
+      displayPastStays(oneGuest1);
+      displayTotalAmount(oneGuest1);
+    })
+}
 
 function fetchAllData() {
   customers = fetchcalls.fetchGuestData();
   bookings = fetchcalls.fetchBookingsData();
   rooms = fetchcalls.fetchRoomsData();
-  oneGuest = fetchcalls.fetchOneGuest(1)
-  return Promise.all([customers, bookings, rooms, oneGuest])
+  // oneGuest = fetchcalls.fetchOneGuest(1)
+  return Promise.all([customers, bookings, rooms])
     .then(data => {
-      createInstances(data[0], data[1], data[2], data[3]);
-      displayPastStays(oneGuest1);
-      displayTotalAmount(oneGuest1)
+      createInstances(data[0], data[1], data[2]);
+      // displayPastStays(oneGuest1);
+      // displayTotalAmount(oneGuest1)
     })
 }
 
 
-function createInstances(customers, bookings, rooms, oneGuest) {
+function createInstances(customers, bookings, rooms) {
   bookingsInstances = new Booking(bookings, rooms)
+  // oneGuest1 = new Guest(oneGuest)
+}
+
+function instantiateNewGuest(oneGuest) {
   oneGuest1 = new Guest(oneGuest)
 }
 
-function show(element) {
-  element.classList.remove('hidden');
+function hide(elements) {
+  elements.forEach(element => element.classList.add('hidden'));
 }
 
-function hide(element) {
-  element.classList.add('hidden');
+function show(elements) {
+  elements.forEach(element => element.classList.remove('hidden'));
 }
-// function displayName(oneGuest1) {
-//   const guestName = document.querySelector('.guest-nav-name')
-//   guestName.innerText = `Welcome ${oneGuest1.name}!`;
-// }
+
+function displayGuestPage() {
+  show([mainPage, navigation])
+  hide([loginHeader, loginForm, loginButton, loginErrorMsg, usernameField, passwordField, subHeaderLogin])
+}
+
+function displayLogin() {
+  hide([mainPage, navigation])
+}
+
+
+function displayName(oneGuest1) {
+  const guestName = document.querySelector('.userNameDisplay')
+  guestName.innerText = `Welcome ${oneGuest1.name}!`;
+}
 
 function displayPastStays(oneGuest1) {
   console.log('I AM A GUEST', oneGuest1)
