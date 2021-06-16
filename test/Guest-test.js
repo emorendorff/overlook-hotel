@@ -9,25 +9,28 @@ describe('Guest', () => {
   let guest3;
 
   beforeEach(() => {
-    guest = new Guest('customer1', customersTest)
-    guest2 = new Guest('customer2', customersTest)
-    guest3 = new Guest('customer3', customersTest)
+    guest = new Guest(customersTest[0])
+    guest2 = new Guest(customersTest[1])
+    guest3 = new Guest(customersTest[2])
   });
 
   describe('Guest', () => {
-    it('should be a function', () => {
+    it.only('should be a function', () => {
       expect(Guest).to.be.a('function');
     });
 
-    it('should be an instance of Guest', () => {
+    it.only('should be an instance of Guest', () => {
       expect(guest).to.be.an.instanceOf(Guest);
     });
 
     it('should have a valid user id', () => {
-      guest2.validateUser('customer2');
       expect(guest2.id).to.equal(2);
-      expect(guest2.isUser).to.equal(true);
     });
+
+    it('should have a name', () => {
+      expect(guest.name).to.equal('Leatha Ullrich');
+      expect(guest2.name).to.equal('Rocio Schuster');
+    })
 
     it('should have no bookings to start', () => {
       expect(guest2.pastStays).to.deep.equal([]);

@@ -5,7 +5,6 @@ class Guest {
     this.id = guest.id;
     this.name = guest.name
     this.password = 'overlook2021';
-    this.isUser = false;
     this.totalSpent = 0;
     this.pastStays = [];
     this.currentStays = [];
