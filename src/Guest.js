@@ -34,7 +34,7 @@ class Guest {
     }
   }
 
-  filterStays(bookingsTest, currentDate) {
+  filterFutureStays(bookingsTest, currentDate) {
     let future = bookingsTest.bookings.filter(booking => {
       if (booking.date > currentDate) {
         this.pastStays = future
@@ -44,6 +44,18 @@ class Guest {
       }
     })
   }
+
+  filterCurrentStay(bookingsTest, currentDate) {
+    let currentStay = bookingsTest.bookings.filter(booking => {
+      if (booking.date === currentDate) {
+        this.pastStays = currentStay
+        return this.pastStays
+      } else {
+        return 'No reservations today'
+      }
+    })
+  }
+
 
 
   // filterByRoomType(roomType) {
