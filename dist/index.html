@@ -9,8 +9,7 @@
   <link rel="stylesheet" type="stylesheet" href="./src/css/index.scss">
   <title>Overlook Hotel</title>
 </head>
-<body>
-  <h1 id="login-header">Login</h1>
+<h1 id="login-header">Login</h1>
   <div id="login-error-msg-holder">
     <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
   </div>
@@ -19,14 +18,15 @@
     <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
     <input type="submit" value="Login" id="login-form-submit">
   </form>
-  <header class="navigation-head">
+  <header class="navigation-head hidden" id="navigation">
     <nav class="guest-navigation">
       <h1>The Overlook Hotel</h1>
       <h3 class="userNameDisplay">Welcome, user!</h3>
       <button type="button" class='logout-btn' id=logoutBtn>Log Out</button>
     </nav>
   </header>
-  <main>
+<body>
+  <main class="hidden" id="mainPage">
     <section class="book-room-container">
       <h3 class="box-headers">STAY WITH US</h3>
       <div class="line"></div>
@@ -65,8 +65,7 @@
       <section class='total-section'></section>
         <h4>TOTAL AMOUNT:</h4>
         <h5 id='totalAmount'></h5>
-    </aside>
-      
+    </aside> 
   </main> 
   
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
