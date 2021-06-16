@@ -34,48 +34,24 @@ class Guest {
     }
   }
 
-  filterFutureStays(bookingsTest, currentDate) {
-    let future = bookingsTest.bookings.filter(booking => {
-      if (booking.date > currentDate) {
-        this.pastStays = future
-        return this.pastStays 
-      } else {
-        return 'You don\'t have any stays coming up'
-      }
-    })
+  filterFutureStays(currentDate) {
+    console.log('PASTSTAYS', this.pastStays)
+    let future = this.pastStays.filter(booking => booking.date > currentDate)
+    if (future) {
+      return future;
+    } else {
+      return 'You don\'t have any upcoming reservations'
+    }
   }
 
-  filterCurrentStay(bookingsTest, currentDate) {
-    let currentStay = bookingsTest.bookings.filter(booking => {
-      if (booking.date === currentDate) {
-        this.pastStays = currentStay
-        return this.pastStays
-      } else {
-        return 'No reservations today'
-      }
-    })
+  filterCurrentStay(currentDate) {
+    let currentStay = this.pastStays.filter(booking => booking.date === currentDate)
+    if (currentStay) {
+      return currentStay
+    } else {
+      return 'No reservations today'
+    }
   }
-
-
-
-  // filterByRoomType(roomType) {
-  //   console.log('room type', roomType)
-
-  //   if (roomType === 'All Rooms') {
-  //     return this.roomsAvailable
-  //   }
-  //   console.log('rooms available', this.roomsAvailable)
-  //   let filteredRooms = this.roomsAvailable.filter(room => room.roomType === roomType)
-  //   console.log('filtered rooms', filteredRooms)
-  //   if (!filteredRooms.length) {
-  //     return "We're so sorry, those types of rooms are haunted on this booking date!"
-  //   } else {
-  //     return filteredRooms
-  //   }
-   
-  // }
-
-
 
   calculateTotalSpent(roomsTest) {
     this.totalSpent = roomsTest.rooms.reduce((sum, room) => {
