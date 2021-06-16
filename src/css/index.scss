@@ -3,13 +3,20 @@
 @import './_colors.scss';
 
 
+body {
+  height: 60%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: $sand
+}
+
 main {
   display: flex;
   justify-content: center;
   padding: 1em;
 }
 
-//main flex
 
 .book-room-container {
   border: .75em solid $red;
@@ -39,6 +46,7 @@ button {
   width: 50%;
   font-size: 1em;
   margin-top: .25em;
+  cursor: pointer;
   }
 
 .logout-btn {
@@ -59,7 +67,7 @@ button {
   border: .5em solid $blush;
   padding: 1em;
   margin: 1em;
-  height: 10em;
+  height: 20em;
   overflow: scroll;
 }
 
@@ -82,55 +90,11 @@ button {
     font-family: $secondary-font;
   }
 
-  // .rooms:hover {
-  //   background-color: white;
-  //   opacity: 60%;
-  // }
-
-  // .selected {
-  //   border: .20em solid $blush;
-  //   background-color: white;
-  //   opacity: 60%;
-  // }
-
-  //this would be a great time to implement a scroll bar lol
-
-  //everything else
 
   .hidden {
     display: none;
   }
-
-
-  h4, h5 {
-    text-align: center;
-  }
-
-  html {
-    height: 100%;
-  }
-  
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    background-color: #3a3a3a;
-  }
-  
-  #main-holder {
-    width: 50%;
-    height: 70%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 7px;
-    box-shadow: 0px 0px 5px 2px black;
-  }
-  
+   
   #login-error-msg-holder {
     width: 100%;
     height: 100%;
@@ -140,15 +104,15 @@ button {
   }
   
   #login-error-msg {
-    width: 23%;
+    width: 25%;
     text-align: center;
     margin: 0;
     padding: 5px;
     font-size: 12px;
     font-weight: bold;
-    color: #8a0000;
-    border: 1px solid #8a0000;
-    background-color: #e58f8f;
+    color: $red;
+    border: 1px solid $red;
+    background-color: $red;
     opacity: 0;
   }
   
@@ -164,26 +128,15 @@ button {
   }
   
   .login-form-field::placeholder {
-    color: #3a3a3a;
+    color: $filler;
   }
   
   .login-form-field {
     border: none;
-    border-bottom: 1px solid #3a3a3a;
+    border-bottom: 1px solid $filler;
     margin-bottom: 10px;
     border-radius: 3px;
     outline: none;
     padding: 0px 0px 5px 5px;
   }
   
-  #login-form-submit {
-    width: 100%;
-    padding: 7px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    background-color: #3a3a3a;
-    cursor: pointer;
-    outline: none;
-  }

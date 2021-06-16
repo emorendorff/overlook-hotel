@@ -13,7 +13,7 @@ let currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 //-------Query Selectors-------//
 const userNameDisplay = document.getElementById('userNameDisplay');
-const logOutBtn = document.getElementById('logOutBtn');
+const logOutBtn = document.getElementById('logoutBtn');
 const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
 const oldBookings = document.getElementById('oldBookings');
 const totalAmount = document.getElementById('totalAmount');
@@ -25,13 +25,14 @@ const bookRoomBtn = document.getElementsByClassName('book-room-btn');
 const navigation = document.getElementById('navigation');
 const mainPage = document.getElementById('mainPage');
 const loginForm = document.getElementById('login-form');
+const usernameField = document.getElementById('usernameField');
+const passwordField = document.getElementById('passwordField');
 const loginHeader = document.getElementById('login-header');
 const loginButton = document.getElementById('login-form-submit');
 const loginErrorMsg = document.getElementById('login-error-msg');
+const subHeaderLogin = document.getElementById('subHeaderLogin')
 
-let randomNumber = Math.floor(Math.random() * 50);
-
-
+//-------------event listenters-----------------//
 window.onload = fetchAllData(), displayLogin();
 
 loginButton.addEventListener("click", (e) => {
@@ -47,7 +48,7 @@ loginButton.addEventListener("click", (e) => {
   } else {
     loginErrorMsg.style.opacity = 1;
   }
-})
+});
 
 checkAvailabilityBtn.addEventListener('click', () => 
   displayAvailableRooms());
@@ -58,7 +59,9 @@ roomsAvailable.addEventListener('click', (e) => {
   if (e.target.closest('button')) {
     bookRoom(e)
   }
-})
+});
+
+logOutBtn.addEventListener('click', () => location.reload())
 
 window.addEventListener('click', function (event) {
   console.log("eventTest", event.target)
@@ -88,6 +91,7 @@ function fetchSingleGuest() {
   return Promise.all([oneGuest])
     .then(data => {
       instantiateNewGuest(data[0]);
+      displayName(oneGuest1);
       displayPastStays(oneGuest1);
       displayTotalAmount(oneGuest1);
     })
@@ -126,7 +130,7 @@ function show(elements) {
 
 function displayGuestPage() {
   show([mainPage, navigation])
-  hide([loginHeader, loginForm, loginButton, loginErrorMsg])
+  hide([loginHeader, loginForm, loginButton, loginErrorMsg, usernameField, passwordField, subHeaderLogin])
 }
 
 function displayLogin() {
@@ -134,10 +138,10 @@ function displayLogin() {
 }
 
 
-// function displayName(oneGuest1) {
-//   const guestName = document.querySelector('.guest-nav-name')
-//   guestName.innerText = `Welcome ${oneGuest1.name}!`;
-// }
+function displayName(oneGuest1) {
+  const guestName = document.querySelector('.userNameDisplay')
+  guestName.innerText = `Welcome ${oneGuest1.name}!`;
+}
 
 function displayPastStays(oneGuest1) {
   console.log('I AM A GUEST', oneGuest1)
