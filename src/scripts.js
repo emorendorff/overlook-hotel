@@ -210,34 +210,46 @@ function searchRoomType() {
 function searchStays() {
   let reservationType1 = reservationType.value;
   console.log('reservation', reservationType1)
-  if(reservationType1 === 'all stays') {
+  if (reservationType1 === 'all stays') {
     displayPastStays(oneGuest1);
   } else if (reservationType1 === 'current stay') {
-    let staySearch = oneGuest1.filterCurrentStay(bookingsInstances, currentDate) 
+    let staySearch = oneGuest1.filterCurrentStay(currentDate) 
+    displayCurrent()
     console.log(staySearch)
   } else if (reservationType1 === 'future stays') {
-    let futureSearch = oneGuest1.filterFutureStays(currentDate) 
-    console.log(futureSearch);
+    displayFuture();
   }
 }
 
+function displayFuture() {
+  let futureSearch = oneGuest1.filterFutureStays(currentDate) 
+  oldBookings.innerHTML = '';
+  if (!futureSearch.length) {
+    oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">'You don\'t have any upcoming reservations'</p>`);
+  } else {
+    futureSearch.forEach(booking => {
+      oldBookings.insertAdjacentHTML('beforeend', `
+        <ul class='begin-previous-stays'>
+          <li class="history">${booking.date} in room ${booking.roomNumber}</li>
+        </ul>`)   
+    });
+  }
+}
 
-// function displayPastStays(oneGuest1) {
-//   console.log('I AM A GUEST', oneGuest1)
-//   oneGuest1.getPastStays(bookingsInstances.bookings)
-//   oldBookings.innerHTML = '';
-//   if (!oneGuest1.pastStays.length) {
-//     oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">You have not stayed with us before</p>`);
-//   } else {
-//     oneGuest1.pastStays.forEach(booking => {
-//       oldBookings.insertAdjacentHTML('beforeend', `
-//       <ul class='begin-previous-stays'>
-//         <li class="history">${booking.date} in room ${booking.roomNumber}</li>
-//       </ul>`)
-      
-//     });
-//   }
-// };
+function displayCurrent() {
+  let staySearch = oneGuest1.filterCurrentStay(currentDate) 
+  oldBookings.innerHTML = '';
+  if (!staySearch.length) {
+    oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">'No reservations today'</p>`);
+  } else {
+    staySearch.forEach(booking => {
+      oldBookings.insertAdjacentHTML('beforeend', `
+        <ul class='begin-previous-stays'>
+          <li class="history">${booking.date} in room ${booking.roomNumber}</li>
+        </ul>`)   
+    });
+  }
+}
 
 function bookRoom(e) {
   console.log(e.target)
