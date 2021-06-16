@@ -79,6 +79,20 @@ const bookingsTest = {
       "date": "2020/04/22",
       "roomNumber": 23,
       "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl8dq",
+      "userID": 2,
+      "date": "06/16/2021",
+      "roomNumber": 23,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55h328dq",
+      "userID": 1,
+      "date": '06/20/2021',
+      "roomNumber": 23,
+      "roomServiceCharges": []
     }
   ]
 }

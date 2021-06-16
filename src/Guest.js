@@ -7,8 +7,6 @@ class Guest {
     this.password = 'overlook2021';
     this.totalSpent = 0;
     this.pastStays = [];
-    this.currentStays = [];
-    this.futureStays = [];
   }
 
 
