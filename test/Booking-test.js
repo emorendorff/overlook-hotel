@@ -30,9 +30,6 @@ describe('Bookings', () => {
     expect(booking.roomsAvailable).to.deep.equal([]);
   });
 
-  it('should have a date', () => {
-    expect(booking.date).to.equal("2020/04/22")
-  });
 
   it('should be able to view available rooms for a given date', () => {
     expect(booking.checkAvailableRooms("2020/04/22")).to.deep.equal(booking.roomsAvailable)
@@ -43,7 +40,6 @@ describe('Bookings', () => {
     booking.checkAvailableRooms("2020/04/22")
     booking.filterByRoomType('residential suite')
     expect(booking.filterByRoomType('residential suite')).to.deep.equal(booking.filterByRoomType('residential suite'))
-
   });
 
 })

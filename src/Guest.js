@@ -5,24 +5,10 @@ class Guest {
     this.id = guest.id;
     this.name = guest.name
     this.password = 'overlook2021';
-    this.isUser = false;
     this.totalSpent = 0;
     this.pastStays = [];
-    this.currentStays = [];
-    this.futureStays = [];
   }
 
-  // validateUser(username) {
-  //   if (username.startsWith('customer')) {
-  //     this.getIdNumber(username) 
-  //   }
-  // }
-  // getIdNumber(username) {
-  //   this.id = Number.parseInt(username.slice(8)) 
-  //   if (this.id > 0 && this.id <= 50) {
-  //     this.isUser = true
-  //   }
-  // }
 
   getPastStays(bookingsTest) {
     let past = bookingsTest.bookings.filter(booking => booking.userID === this.id)
@@ -35,7 +21,6 @@ class Guest {
   }
 
   filterFutureStays(currentDate) {
-    console.log('PASTSTAYS', this.pastStays)
     let future = this.pastStays.filter(booking => booking.date > currentDate)
     if (future) {
       return future;
