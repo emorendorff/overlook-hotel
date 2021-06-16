@@ -25,14 +25,31 @@ class Guest {
   // }
 
   getPastStays(bookingsTest) {
-    // this.validateUser(this.userID)
     let past = bookingsTest.bookings.filter(booking => booking.userID === this.id)
-    
     this.pastStays = past
     if (!this.pastStays.length) {
       return 'You have not stayed with us before'
     } else {
       return this.pastStays
+    }
+  }
+
+  filterFutureStays(currentDate) {
+    console.log('PASTSTAYS', this.pastStays)
+    let future = this.pastStays.filter(booking => booking.date > currentDate)
+    if (future) {
+      return future;
+    } else {
+      return 'You don\'t have any upcoming reservations'
+    }
+  }
+
+  filterCurrentStay(currentDate) {
+    let currentStay = this.pastStays.filter(booking => booking.date === currentDate)
+    if (currentStay) {
+      return currentStay
+    } else {
+      return 'No reservations today'
     }
   }
 

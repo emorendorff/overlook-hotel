@@ -30,7 +30,9 @@ const passwordField = document.getElementById('passwordField');
 const loginHeader = document.getElementById('login-header');
 const loginButton = document.getElementById('login-form-submit');
 const loginErrorMsg = document.getElementById('login-error-msg');
-const subHeaderLogin = document.getElementById('subHeaderLogin')
+const subHeaderLogin = document.getElementById('subHeaderLogin');
+const reservationType = document.getElementById('reservationType');
+const searchByStayBtn = document.getElementById('searchByStayBtn')
 
 //-------------event listenters-----------------//
 window.onload = fetchAllData(), displayLogin();
@@ -45,6 +47,7 @@ loginButton.addEventListener("click", (e) => {
   if (validateUser(username) === true && validatePassword(password) === true) {
     fetchSingleGuest()
     displayGuestPage()
+    console.log('DAY', currentDate)
   } else {
     loginErrorMsg.style.opacity = 1;
   }
@@ -53,11 +56,16 @@ loginButton.addEventListener("click", (e) => {
 checkAvailabilityBtn.addEventListener('click', () => 
   displayAvailableRooms());
 
-searchByTypeSubmitBtn.addEventListener('click', () => searchRoomType())
+searchByTypeSubmitBtn.addEventListener('click', () => searchRoomType());
+
+searchByStayBtn.addEventListener('click', () => searchStays());
 
 roomsAvailable.addEventListener('click', (e) => {
   if (e.target.closest('button')) {
     bookRoom(e)
+    fetchAllData();
+    displayPastStays(oneGuest1);
+    displayTotalAmount(oneGuest1);
   }
 });
 
@@ -197,6 +205,50 @@ function searchRoomType() {
       </li>
     <ul class='begin-available-rooms'>`
   })
+}
+
+function searchStays() {
+  let reservationType1 = reservationType.value;
+  console.log('reservation', reservationType1)
+  if (reservationType1 === 'all stays') {
+    displayPastStays(oneGuest1);
+  } else if (reservationType1 === 'current stay') {
+    let staySearch = oneGuest1.filterCurrentStay(currentDate) 
+    displayCurrent()
+    console.log(staySearch)
+  } else if (reservationType1 === 'future stays') {
+    displayFuture();
+  }
+}
+
+function displayFuture() {
+  let futureSearch = oneGuest1.filterFutureStays(currentDate) 
+  oldBookings.innerHTML = '';
+  if (!futureSearch.length) {
+    oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">'You don\'t have any upcoming reservations'</p>`);
+  } else {
+    futureSearch.forEach(booking => {
+      oldBookings.insertAdjacentHTML('beforeend', `
+        <ul class='begin-previous-stays'>
+          <li class="history">${booking.date} in room ${booking.roomNumber}</li>
+        </ul>`)   
+    });
+  }
+}
+
+function displayCurrent() {
+  let staySearch = oneGuest1.filterCurrentStay(currentDate) 
+  oldBookings.innerHTML = '';
+  if (!staySearch.length) {
+    oldBookings.insertAdjacentHTML ('beforeend', `<p class="history">'No reservations today'</p>`);
+  } else {
+    staySearch.forEach(booking => {
+      oldBookings.insertAdjacentHTML('beforeend', `
+        <ul class='begin-previous-stays'>
+          <li class="history">${booking.date} in room ${booking.roomNumber}</li>
+        </ul>`)   
+    });
+  }
 }
 
 function bookRoom(e) {
