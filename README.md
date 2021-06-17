@@ -7,8 +7,7 @@
 - [Features](#features)
 - [In Action](#in-action)
 - [Instructions for Running Project Locally](#intructions-for-running-project-locally)
-- [Future Iterations](#future-iterations)![recording (7)](https://user-images.githubusercontent.com/77934658/122323835-5a26df00-ceed-11eb-9f87-fdb1ac4dd8ad.gif)
-
+- [Future Iterations](#future-iterations)
 
 
 ## Overview
