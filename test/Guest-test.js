@@ -15,15 +15,15 @@ describe('Guest', () => {
   });
 
   describe('Guest', () => {
-    it.only('should be a function', () => {
+    it('should be a function', () => {
       expect(Guest).to.be.a('function');
     });
 
-    it.only('should be an instance of Guest', () => {
+    it('should be an instance of Guest', () => {
       expect(guest).to.be.an.instanceOf(Guest);
     });
 
-    it.only('should have a valid user id', () => {
+    it('should have a valid user id', () => {
       expect(guest2.id).to.equal(2);
       expect(guest3.id).to.equal(3);
     });

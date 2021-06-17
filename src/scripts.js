@@ -11,6 +11,7 @@ import './images/axe.png'
 let loginNumber, rooms, bookings, customers, oneGuest1, oneGuest, bookingsInstances;
 let currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
+
 //-------Query Selectors-------//
 const userNameDisplay = document.getElementById('userNameDisplay');
 const logOutBtn = document.getElementById('logoutBtn');
@@ -32,8 +33,9 @@ const loginButton = document.getElementById('login-form-submit');
 const loginErrorMsg = document.getElementById('login-error-msg');
 const subHeaderLogin = document.getElementById('subHeaderLogin');
 const reservationType = document.getElementById('reservationType');
-const searchByStayBtn = document.getElementById('searchByStayBtn')
-
+const searchByStayBtn = document.getElementById('searchByStayBtn');
+const loginContainer = document.getElementById('loginContainer');
+calendarStart.setAttribute('min', currentDate)
 //-------------event listenters-----------------//
 window.onload = fetchAllData(), displayLogin();
 
@@ -47,7 +49,6 @@ loginButton.addEventListener("click", (e) => {
   if (validateUser(username) === true && validatePassword(password) === true) {
     fetchSingleGuest()
     displayGuestPage()
-    console.log('DAY', currentDate)
   } else {
     loginErrorMsg.style.opacity = 1;
   }
@@ -63,9 +64,6 @@ searchByStayBtn.addEventListener('click', () => searchStays());
 roomsAvailable.addEventListener('click', (e) => {
   if (e.target.closest('button')) {
     bookRoom(e)
-    fetchAllData();
-    displayPastStays(oneGuest1);
-    displayTotalAmount(oneGuest1);
   }
 });
 
@@ -105,23 +103,21 @@ function fetchSingleGuest() {
     })
 }
 
-function fetchAllData() {
+export function fetchAllData() {
   customers = fetchcalls.fetchGuestData();
   bookings = fetchcalls.fetchBookingsData();
   rooms = fetchcalls.fetchRoomsData();
-  // oneGuest = fetchcalls.fetchOneGuest(1)
   return Promise.all([customers, bookings, rooms])
     .then(data => {
       createInstances(data[0], data[1], data[2]);
-      // displayPastStays(oneGuest1);
-      // displayTotalAmount(oneGuest1)
+      displayPastStays(oneGuest1)
+      displayTotalAmount(oneGuest1)
     })
 }
 
 
 function createInstances(customers, bookings, rooms) {
   bookingsInstances = new Booking(bookings, rooms)
-  // oneGuest1 = new Guest(oneGuest)
 }
 
 function instantiateNewGuest(oneGuest) {
@@ -138,7 +134,7 @@ function show(elements) {
 
 function displayGuestPage() {
   show([mainPage, navigation])
-  hide([loginHeader, loginForm, loginButton, loginErrorMsg, usernameField, passwordField, subHeaderLogin])
+  hide([loginContainer])
 }
 
 function displayLogin() {
@@ -252,11 +248,11 @@ function displayCurrent() {
 }
 
 function bookRoom(e) {
-  console.log(e.target)
   if (e.target.classList.contains('book-room-btn')) {
     let roomNumber = parseInt(e.target.closest('button').id)
     let date = dayjs(calendarStart.value).format('YYYY/MM/DD');
     fetchcalls.postNewBooking(oneGuest1.id, date, roomNumber)
+
   } else {
     e.preventDefault();
   }

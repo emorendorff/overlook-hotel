@@ -9,16 +9,18 @@
   <link rel="stylesheet" type="stylesheet" href="./src/css/index.scss">
   <title>Overlook Hotel</title>
 </head>
-<h1 id="login-header">Welcome to The Overlook Hotel</h1>
-<h2 id="subHeaderLogin">Please login in below</h2>
-  <div id="login-error-msg-holder">
-    <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-  </div>
-  <form id="login-form">
-    <input type="text" name="username" id="usernameField" class="login-form-field" placeholder="Username">
-    <input type="password" name="password" id="passwordField" class="login-form-field" placeholder="Password">
-    <button type="submit" value="Login" id="login-form-submit">Login</button>
-  </form>
+<section class=login-container id=loginContainer>
+  <h1 id="login-header">Welcome to The Overlook Hotel</h1>
+  <h2 id="subHeaderLogin">Please login in below</h2>
+    <div class="login-holder" id="login-error-msg-holder">
+      <p class="login-error" id="login-error-msg">Invalid username <span class="error-second" id="error-msg-second-line">and/or password</span></p>
+    </div>
+    <form class="login-form" id="login-form">
+      <input type="text" name="username" id="usernameField" class="login-form-field" placeholder="Username">
+      <input type="password" name="password" id="passwordField" class="login-form-field" placeholder="Password">
+      <button type="submit" value="Login" id="login-form-submit">Login</button>
+    </form>
+  </section>
   <header class="navigation-head hidden" id="navigation">
     <nav class="guest-navigation">
       <h1>The Overlook Hotel</h1>
@@ -34,7 +36,7 @@
       <section class='left-side-input'>
         <label for='start-date'><p>DATE:</p></label>
         <div class='date-container'>
-          <input type='date' name='start-date' value='' id=startDate aria-label="date selection" min="2021-06-01" alt='Enter the date here.'>            
+          <input type='date' name='start-date' value='' id=startDate aria-label="date selection" min="2021-06-16" value="2021-06-16" max="2022-06-16" alt='Enter the date here.'>            
           <button type='button' name='check-availability' id='checkAvailabilityBtn'>Check Availability</button>
         </div>
         <section class="available frame" id="roomsAvailable"></section>
@@ -57,6 +59,7 @@
     </section>
     <aside class='past-bookings-container' id='pastBookingsHolder'>
       <h3 class='section-header'>YOUR STAYS</h3>
+      <div class="line"></div>
       <section class="old-bookings right-frame" id='oldBookings'> 
       </section>
       <div class="filter-stays-button">
