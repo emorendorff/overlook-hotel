@@ -1,13 +1,14 @@
-# What's Cooking 
+# The Overlook Hotel 
 
 ### Table of Contents
 - [Overview](#overview)
-- [Project Goals](#project-goals)
-- [Authors and Contributors](#authors-and-project-manager)
+- [Learning Goals](#learning-goals)
+- [Contributors](#contributors)
 - [Features](#features)
-- [How to Use](#how-to-use)
-- [Project Reflection](#project-reflection)
-- [Instructions for Running Project](#Instructions-for-running-project)
+- [In Action](#in-action)
+- [Instructions for Running Project Locally](#intructions-for-running-project-locally)
+- [Future Iterations](#future-iterations)![recording (7)](https://user-images.githubusercontent.com/77934658/122323835-5a26df00-ceed-11eb-9f87-fdb1ac4dd8ad.gif)
+
 
 
 ## Overview
@@ -28,8 +29,11 @@ This app is a hotel management tool for hotel customers to manage room bookings 
 - Hannah Hudson (Project Manager)
 
 ## In Action 
-
-### Login Page and error 
+![Login and Error Handling](https://user-images.githubusercontent.com/77934658/122324000-aa05a600-ceed-11eb-97e3-2e237392d761.gif)
+![Check Availability and Book Room](https://user-images.githubusercontent.com/77934658/122324033-b7bb2b80-ceed-11eb-8d77-d16038ee96a1.gif)
+![Filter By Room Type](https://user-images.githubusercontent.com/77934658/122324360-429c2600-ceee-11eb-97fd-53f54df4e1ee.gif)
+![Filter Your Stays](https://user-images.githubusercontent.com/77934658/122324418-5a73aa00-ceee-11eb-913d-c77413f5908a.gif)
+![Log Out Button](https://user-images.githubusercontent.com/77934658/122324450-68c1c600-ceee-11eb-823c-420cc576cd0f.gif)
 
 ## Instructions for Running Project Locally 
 1. Clone down the [overlook hotel API](https://github.com/turingschool-examples/overlook-api).
