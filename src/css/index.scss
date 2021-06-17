@@ -3,14 +3,6 @@
 @import './_colors.scss';
 
 
-body {
-  height: 60%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  background-color: $sand
-}
-
 main {
   display: flex;
   justify-content: center;
@@ -71,10 +63,7 @@ button {
   overflow: scroll;
 }
 
-// border: 1em solid white;
-// height: 30em;
-// margin: 1em 0;
-// overflow: scroll;
+
 
   //navigation 
 
@@ -90,12 +79,20 @@ button {
     font-family: $secondary-font;
   }
 
+  .login-container {
+    height: 60%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: $sand
+  }
+
 
   .hidden {
     display: none;
   }
    
-  #login-error-msg-holder {
+  .login-holder {
     width: 100%;
     height: 100%;
     display: grid;
@@ -103,7 +100,7 @@ button {
     align-items: center;
   }
   
-  #login-error-msg {
+  .login-error {
     width: 25%;
     text-align: center;
     margin: 0;
@@ -112,15 +109,15 @@ button {
     font-weight: bold;
     color: $red;
     border: 1px solid $red;
-    background-color: $red;
+    background-color: white;
     opacity: 0;
   }
   
-  #error-msg-second-line {
+  .error-second {
     display: block;
   }
   
-  #login-form {
+  .login-form {
     align-self: flex-start;
     display: grid;
     justify-items: center;

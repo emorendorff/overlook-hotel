@@ -1,4 +1,8 @@
 
+import {
+  fetchAllData
+} from './scripts';
+
 const checkForError = (response) => {
   if (!response.ok) {
     throw new Error('Something went wrong, please try again,')
@@ -44,6 +48,7 @@ const postNewBooking = (userID, date, roomNumber) => {
     }),
   })
     .then(response => checkForError(response))
+    .then(() => fetchAllData())
     .catch(error => console.error(`POST Request Error: ${error.message}`));   
 };
 
